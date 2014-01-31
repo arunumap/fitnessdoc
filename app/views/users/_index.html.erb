@@ -1,0 +1,14 @@
+<%= form_tag users_path, :method => "get", :id => "searchbox" do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search", :name => nil, class: "button" %>
+<% end %>
+<% @pro.each do |ind| %>
+	<ul>
+		<li><%= ind.name %><%= form_tag user_path(current_user.id), method: "put" do %>
+														<%= hidden_field_tag :admin, ind.id %>
+														<%= submit_tag "add", class: "button" %>
+														<%= submit_tag "delete", class: "button" %>
+														<% end %></li>
+
+	</ul>
+<% end %>

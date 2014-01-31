@@ -1,0 +1,7 @@
+<h1>hi</h1>
+<h3>My Professional</h3>
+<% if @admin == nil %>
+<p>You are not connected to a professional.  Please link to your professional by clicking here <%= link_to "find your pro", users_path %></p>
+<% else %>
+<p><%= @admin.name %></p>
+<% end %>
