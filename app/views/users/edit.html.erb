@@ -1,0 +1,17 @@
+<h1>Edit me!</h1>
+<div class="row">
+  <div class="small-4 columns"></div>
+  <div class="small-4 columns">
+  	<%= form_for(@user) do |f| %>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+			<% if @user.email == "doe@example.com" %>
+				<span class="[success alert secondary] [round radius] label">	update email</span>
+			<% end %>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+			<%= f.submit "Update" %>
+			<% end %>
+  </div>
+  <div class="small-4 columns"></div>
+</div>

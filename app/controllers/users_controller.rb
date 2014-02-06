@@ -13,12 +13,23 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@admin = @user.admin
 		@measurement = Measurement.where(user_id: @user.id)
+		if @user.email == "doe@example.com"
+			redirect_to edit_user_path(@user)
+		end
 	end
 
 	def update
 		@user = User.find(params[:id])
 		@convert = User.link_to_admin(params)
 		redirect_to user_path(current_user.id)
+	end
+
+	def edit
+		if current_user.email == "doe@example.com"
+			@user = User.find(params[:id])
+		else
+			redirect_to users_path(current_user.id)
+		end
 	end
 
 	
