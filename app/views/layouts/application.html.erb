@@ -16,17 +16,24 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><a href="#">Right Button Active</a></li>
       <li class="has-dropdown">
         <% if current_admin_user %>
-          <%= link_to "Welcome" + current_admin_user.name, user_path(current_admin_user) %>
+          <%= link_to "Welcome" + current_admin_user.name, admin_path(current_admin_user) %>
+          <ul class="dropdown">
+            <li><%= link_to "log out", logout_path %></li>
+          </ul>
         <% elsif current_user %>
-          <%= link_to "Welcome" + current_user.name, user_path
+          <%= link_to "Welcome" + current_user.name, user_path(current_user.id) %>
+          <ul class="dropdown">
+            <li><%= link_to "log out", logout_path %></li>
+          </ul>
+        <% else %>
+          <a href="#">Login</a>
+            <ul class="dropdown">
+              <li><%= link_to "Admin Login", login_path %></li>
+              <li><%= link_to "sign in with Fitbit", "/auth/fitbit" %></li>
+            </ul>
         <% end %>
-        <a href="#">Login</a>
-        <ul class="dropdown">
-          <li>afaf</li>
-        </ul>
       </li>
     </ul>
 
