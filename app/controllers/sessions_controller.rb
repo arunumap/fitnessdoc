@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   		user = Admin.find_by_email(params[:email])
   		if user && user.authenticate(params[:password])
   			session[:admin_id] = user.id
-  			redirect_to root_url, notice: "Logged in!"
+  			redirect_to admin_path(user.id), notice: "Logged in!"
  			else
  				flash.now.alert = "Email or password invalid"
   			render "new"
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   		user = User.from_omniauth(env["omniauth.auth"])
       session[:user_id] = user.id
       measurement = Measurement.get_fitbit_data(current_user)
-      redirect_to user_path(user.id)
+      redirect_to user_path(user.id), notice: "Logged in!"
   	end
   end
 
