@@ -1,5 +1,5 @@
 Fitnessdoc::Application.routes.draw do
-	match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get]
 

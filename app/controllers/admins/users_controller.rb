@@ -4,4 +4,8 @@ class Admins::UsersController < ApplicationController
 
 	end
 
+	def index
+
+	end
+
 end
